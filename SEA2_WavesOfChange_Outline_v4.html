@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waves of Change: SEA2 Video Outline v4</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:          #050d18;
+    --card:        #091422;
+    --inner:       #060f1c;
+    --border:      #0f2236;
+    --border-lt:   #162e47;
+
+    --ocean-1:     #1d6fa4;   /* deep ocean — act 1 */
+    --ocean-2:     #1a7a6e;   /* mid-ocean teal — act 2 */
+    --ocean-3:     #2563a8;   /* abyssal — act 3 */
+
+    --cyan:        #38bdf8;
+    --teal:        #2dd4bf;
+    --indigo:      #818cf8;
+    --seafoam:     #34d399;
+    --gold:        #f0b429;
+
+    --pi-fill:     #071e36;
+    --pi-border:   #0e3a60;
+    --pi-label:    #38bdf8;
+
+    --ext-fill:    #1c1205;
+    --ext-border:  #3a2808;
+    --ext-label:   #f0b429;
+
+    --vis-fill:    #07151f;
+    --vis-border:  #0d2535;
+    --vis-label:   #2dd4bf;
+
+    --conn-fill:   #061820;
+    --conn-border: #1a7a6e;
+    --conn-text:   #5dbfb2;
+
+    --text:        #a8ccdf;
+    --text-lt:     #d4eaf5;
+    --muted:       #7aaec8;
+    --dim:         #2a4a62;
+    --white:       #e8f4fc;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 28px 100px;
+  }
+
+  /* ── Top Nav ── */
+  .topnav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+    font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+  }
+  .topnav .draft { color: var(--gold); font-weight: 700; }
+
+  /* ── Title ── */
+  .title-block { margin-bottom: 24px; line-height: 1.05; }
+  .t-main { font-size: 50px; font-weight: 800; color: var(--white); letter-spacing: -0.03em; }
+  .t-sub  { font-size: 50px; font-weight: 700; font-style: italic; color: var(--cyan); letter-spacing: -0.03em; }
+
+  /* ── Format bar ── */
+  .format-bar {
+    display: flex; flex-wrap: wrap; gap: 0;
+    margin: 24px 0 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .fmt { padding-right: 22px; margin-right: 22px; border-right: 1px solid var(--border); }
+  .fmt:last-child { border-right: none; }
+  .fmt-label { font-size: 8px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .fmt-val   { font-size: 12px; color: var(--white); font-weight: 500; }
+
+  /* ── Logline / Summary blocks ── */
+  .intro-block { margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid var(--border); }
+  .intro-label { font-size: 8px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cyan); margin-bottom: 7px; }
+  .intro-text  { font-size: 12px; color: #8ab8d0; line-height: 1.85; }
+
+  /* ── Contributor key ── */
+  .key { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 32px; }
+  .key-item {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 4px; padding: 7px 12px;
+  }
+  .key-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .key-dot.pi  { background: var(--cyan); }
+  .key-dot.ext { background: var(--gold); }
+  .key-dot.vis { background: var(--teal); }
+  .key-text { font-size: 10px; color: var(--muted); }
+  .key-text strong { color: var(--text-lt); font-weight: 600; }
+
+  /* ── Act Divider ── */
+  .act-bar {
+    display: flex; align-items: center; gap: 14px;
+    border-radius: 4px; padding: 10px 18px;
+    margin: 52px 0 20px;
+    border: 1px solid var(--border-lt);
+  }
+  .act-bar.a1 { background: #06121e; border-color: #0e2d48; }
+  .act-bar.a2 { background: #061a18; border-color: #0e3530; }
+  .act-bar.a3 { background: #07101e; border-color: #102040; }
+  .act-num {
+    font-size: 9px; font-weight: 800; letter-spacing: 0.18em;
+    text-transform: uppercase; white-space: nowrap;
+  }
+  .act-num.a1 { color: var(--cyan); }
+  .act-num.a2 { color: var(--teal); }
+  .act-num.a3 { color: var(--indigo); }
+  .act-sep  { width: 1px; height: 14px; background: var(--border); flex-shrink: 0; }
+  .act-desc { font-size: 11px; color: var(--muted); }
+
+  /* ── Scene Card ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 22px 22px 18px;
+    margin-bottom: 14px;
+  }
+
+  /* Card header row */
+  .card-head { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 14px; }
+  .scene-num { font-size: 32px; font-weight: 800; color: var(--dim); line-height: 1; min-width: 44px; flex-shrink: 0; padding-top: 2px; }
+  .card-titles { flex: 1; }
+  .card-title { font-size: 17px; font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 5px; }
+  .card-sub   { font-size: 10px; color: var(--muted); letter-spacing: 0.04em; margin-bottom: 6px; }
+  .card-hook  { font-size: 11px; color: var(--cyan); font-style: italic; opacity: 0.75; }
+
+  .badges { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; flex-shrink: 0; }
+  .badge {
+    display: inline-block; padding: 3px 9px; border-radius: 3px;
+    font-size: 8px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap;
+  }
+  .b-dim   { background: #0a1628; color: #6a96b8;   border: 1px solid var(--border); }
+  .b-cyan  { background: #061e30; color: var(--cyan);    border: 1px solid #0d3a55; }
+  .b-teal  { background: #061e1c; color: var(--teal);    border: 1px solid #0d3530; }
+  .b-gold  { background: #1a1004; color: var(--gold);    border: 1px solid #352005; }
+  .b-ind   { background: #10122a; color: var(--indigo);  border: 1px solid #1e2050; }
+  .b-arch  { background: #071520; color: var(--teal);    border: 1px solid #0d2838; }
+
+  /* ── Divider between sections ── */
+  .card-divider { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
+
+  /* ── Section label ── */
+  .s-label {
+    font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 8px;
+  }
+  .s-label.vis     { color: var(--teal); }
+  .s-label.content { color: var(--cyan); }
+  .s-label.pi      { color: var(--cyan); }
+  .s-label.ext     { color: var(--gold); }
+
+  /* ── Visuals block ── */
+  .vis-block {
+    background: var(--vis-fill);
+    border: 1px solid var(--vis-border);
+    border-radius: 4px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+  .vis-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .vtag {
+    background: #07101a; border: 1px solid #0d2030;
+    border-radius: 3px; padding: 3px 9px;
+    font-size: 10px; color: #7aaec8;
+  }
+
+  /* ── Content / prompts block ── */
+  .content-block {
+    background: var(--inner);
+    border-radius: 4px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+  .content-block ul { list-style: none; }
+  .content-block li {
+    font-size: 11.5px; color: var(--text-lt);
+    line-height: 1.7; padding: 3px 0 3px 16px; position: relative;
+  }
+  .content-block li::before { content: "—"; position: absolute; left: 0; color: var(--dim); }
+
+  /* ── PI block ── */
+  .pi-block {
+    background: var(--pi-fill);
+    border: 1px solid var(--pi-border);
+    border-radius: 4px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+  .profile-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .chip {
+    border-radius: 3px; padding: 4px 10px;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.03em;
+  }
+  .chip.pi  { background: #082540; color: var(--cyan);    border: 1px solid #0e3d60; }
+  .chip.ext { background: #1a1004; color: var(--gold);    border: 1px solid #352005; }
+  .chip.tbc { background: #0e1828; color: #6a90b0; border: 1px solid #1a3048; font-style: italic; }
+
+  /* ── External voice block ── */
+  .ext-block {
+    background: var(--ext-fill);
+    border: 1px solid var(--ext-border);
+    border-radius: 4px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+  .ext-block ul { list-style: none; }
+  .ext-block li {
+    font-size: 11.5px; color: var(--text-lt);
+    line-height: 1.7; padding: 3px 0 3px 16px; position: relative;
+  }
+  .ext-block li::before { content: "—"; position: absolute; left: 0; color: #6a4010; }
+
+  /* ── Connector note ── */
+  .connector {
+    margin: 14px 0 2px;
+    padding: 9px 14px 9px 16px;
+    border-left: 2px solid var(--teal);
+    background: var(--conn-fill);
+    border-radius: 0 4px 4px 0;
+    font-size: 11px; color: var(--conn-text); font-style: italic; line-height: 1.7;
+  }
+  .connector::before { content: "→  "; color: var(--teal); font-style: normal; font-weight: 700; }
+
+  /* ── Timeline strip ── */
+  .timeline {
+    display: flex; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin: 56px 0 0;
+  }
+  .tl-item {
+    flex: 1; padding: 11px 9px; border-right: 1px solid var(--border); background: var(--card);
+  }
+  .tl-item:last-child { border-right: none; }
+  .tl-num   { font-size: 10px; font-weight: 800; color: var(--dim); margin-bottom: 3px; }
+  .tl-title { font-size: 9px; color: var(--muted); line-height: 1.4; }
+
+  /* ── Production Notes ── */
+  .prod { margin-top: 60px; }
+  .prod-header {
+    font-size: 8px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--border);
+  }
+  .prod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .prod-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 16px;
+  }
+  .prod-card-title {
+    font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--white); font-weight: 700; margin-bottom: 10px;
+  }
+  .prod-card ul { list-style: none; }
+  .prod-card li {
+    font-size: 11px; color: #8ab8d0; line-height: 1.75;
+    padding: 2px 0 2px 12px; position: relative;
+  }
+  .prod-card li::before { content: "·"; position: absolute; left: 0; color: var(--dim); }
+
+  /* ── Next Steps ── */
+  .next-steps {
+    margin-top: 12px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 4px; padding: 16px;
+    grid-column: 1 / -1;
+  }
+  .next-steps-title {
+    font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--white); font-weight: 700; margin-bottom: 10px;
+  }
+  .next-steps ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
+  .next-steps li {
+    font-size: 11px; color: #8ab8d0; line-height: 1.75;
+    padding: 2px 0 2px 12px; position: relative;
+  }
+  .next-steps li::before { content: "·"; position: absolute; left: 0; color: var(--dim); }
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<div class="topnav">
+  <span>Video Outline · SEA2 Programme · Draft</span>
+  <span class="draft">Revised Draft V4</span>
+</div>
+
+<!-- TITLE -->
+<div class="title-block">
+  <div class="t-main">Waves of Change</div>
+  <div class="t-sub">Five Years of SEA2</div>
+</div>
+
+<!-- FORMAT BAR -->
+<div class="format-bar">
+  <div class="fmt"><div class="fmt-label">Format</div><div class="fmt-val">Documentary</div></div>
+  <div class="fmt"><div class="fmt-label">Run Time</div><div class="fmt-val">7–8 Minutes</div></div>
+  <div class="fmt"><div class="fmt-label">Style</div><div class="fmt-val">Interview-led · Archival-rich</div></div>
+  <div class="fmt"><div class="fmt-label">Tone</div><div class="fmt-val">Calm · Reflective · Authoritative</div></div>
+  <div class="fmt"><div class="fmt-label">Structure</div><div class="fmt-val">Opening · D · B · A · C · E · Closing</div></div>
+</div>
+
+<!-- LOGLINE -->
+<div class="intro-block">
+  <div class="intro-label">Logline</div>
+  <div class="intro-text">Five years of science dedicated to one question: how do we project sea level rise in Southeast Asia accurately enough to act on it? A retrospective on SEA2, following the research from ancient coral records to sinking cities, and the communities whose futures depend on getting it right.</div>
+</div>
+
+<!-- KEY -->
+<div class="key">
+  <div class="key-item"><div class="key-dot pi"></div><div class="key-text"><strong>Profile (PI)</strong> Named researcher featured on camera</div></div>
+  <div class="key-item"><div class="key-dot ext"></div><div class="key-text"><strong>External Voice</strong> Government or regional partner</div></div>
+  <div class="key-item"><div class="key-dot vis"></div><div class="key-text"><strong>Visuals</strong> Archival material and B-roll suggestions</div></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     ACT 1 · THE QUESTION
+═══════════════════════════════════════════════════════ -->
+<div class="act-bar a1">
+  <span class="act-num a1">Act 1 · The Question</span>
+  <div class="act-sep"></div>
+  <span class="act-desc">Establish the programme and the challenge it was built to answer</span>
+</div>
+
+<!-- ── OPENING ── -->
+<div class="card">
+  <div class="card-head">
+    <div class="scene-num">01</div>
+    <div class="card-titles">
+      <div class="card-title">Opening: Looking Back</div>
+      <div class="card-sub">Opening Sequence · ~60 seconds · Archival only</div>
+      <div class="card-hook">"What was the fundamental question SEA2 set out to answer?"</div>
+    </div>
+    <div class="badges">
+      <span class="badge b-dim">~60 sec</span>
+      <span class="badge b-arch">Archival Only</span>
+    </div>
+  </div>
+
+  <hr class="card-divider">
+
+  <div class="vis-block">
+    <div class="s-label vis">Visuals</div>
+    <div class="vis-tags">
+      <span class="vtag">Field notebooks being opened</span>
+      <span class="vtag">Field photos of fieldwork sites</span>
+      <span class="vtag">Coastal landscapes</span>
+      <span class="vtag">Coral microatolls</span>
+      <span class="vtag">Tide gauges</span>
+      <span class="vtag">Satellite imagery</span>
+      <span class="vtag">Title card</span>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <div class="s-label content">Content / Narrator</div>
+    <ul>
+      <li>What was the fundamental question SEA2 set out to answer?</li>
+      <li>Introduces the region and the stakes</li>
+      <li>Sets a reflective register. Looking back from a position of knowledge.</li>
+    </ul>
+  </div>
+
+  <div class="pi-block">
+    <div class="s-label pi">Narrator Profile</div>
+    <div class="profile-chips">
+      <span class="chip pi">Adam Switzer</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── CHAPTER 1 — COMPONENT D ── -->
+<div class="card">
+  <div class="card-head">
+    <div class="scene-num">02</div>
+    <div class="card-titles">
+      <div class="card-title">Projections and Uncertainty</div>
+      <div class="card-sub">Component D · Sea Level Projections and Modelling · ~100 seconds</div>
+      <div class="card-hook">"A projection is not just a number. It is the foundation every coastal decision is built on."</div>
+    </div>
+    <div class="badges">
+      <span class="badge b-dim">~100 sec</span>
+      <span class="badge b-cyan">Interview + Archival</span>
+      <span class="badge b-gold">+ External Voice</span>
+    </div>
+  </div>
+
+  <hr class="card-divider">
+
+  <div class="vis-block">
+    <div class="s-label vis">Visuals</div>
+    <div class="vis-tags">
+      <span class="vtag">Model ensembles / probability ranges</span>
+      <span class="vtag">Scientists at tables</span>
+      <span class="vtag">Whiteboards and code</span>
+      <span class="vtag">Projection graphs</span>
+      <span class="vtag">3D Earth structure models</span>
+      <span class="vtag">Workshop images</span>
+    </div>
+  </div>
+
+  <div class="pi-block">
+    <div class="s-label pi">Profiles</div>
+    <div class="profile-chips">
+      <span class="chip pi">Tim Shaw</span>
+      <span class="chip pi">Trina</span>
+      <span class="chip ext">Aurel Moise, Deputy Director · CCRS</span>
+    </div>
+    <div class="s-label content" style="margin-top:10px">Content / Prompts</div>
+    <ul class="content-block" style="background:transparent;padding:0;margin:0;border:none">
+      <li>Why is it so difficult to project future sea level with certainty?</li>
+      <li>Over the course of SEA2, did your relationship with uncertainty change?</li>
+      <li>How do you explain uncertainty to planners or decision-makers?</li>
+      <li>SEA2 found that fewer than a third of Asian coastal planners account for uncertainty in their projections. What does that gap mean in practice?</li>
+    </ul>
+  </div>
+
+  <div class="connector">Good projections need two things: a deep record of past behaviour, and a precise read of everything changing sea level today. The next two chapters build both.</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     ACT 2 · THE EVIDENCE
+═══════════════════════════════════════════════════════ -->
+<div class="act-bar a2">
+  <span class="act-num a2">Act 2 · The Evidence</span>
+  <div class="act-sep"></div>
+  <span class="act-desc">Research threads that deepen and sharpen the projection picture</span>
+</div>
+
+<!-- ── CHAPTER 2 — COMPONENT B ── -->
+<div class="card">
+  <div class="card-head">
+    <div class="scene-num">03</div>
+    <div class="card-titles">
+      <div class="card-title">Learning from the Past</div>
+      <div class="card-sub">Component B · Geological and Historical Sea Level Records · ~100 seconds</div>
+      <div class="card-hook">"Nature kept its own records. Corals and sediment logged sea level millennia before any instrument could."</div>
+    </div>
+    <div class="badges">
+      <span class="badge b-dim">~100 sec</span>
+      <span class="badge b-cyan">Interview + Archival</span>
+    </div>
+  </div>
+
+  <hr class="card-divider">
+
+  <div class="vis-block">
+    <div class="s-label vis">Visuals</div>
+    <div class="vis-tags">
+      <span class="vtag">Coral microatolls, 3D models rotating slowly</span>
+      <span class="vtag">Sediment cores</span>
+      <span class="vtag">Mangrove fieldwork</span>
+      <span class="vtag">Natuna Island coral fieldwork</span>
+      <span class="vtag">Historical sea level reconstructions</span>
+      <span class="vtag">Pulau Ubin / Sentosa fieldwork</span>
+      <span class="vtag">Lab core analysis</span>
+    </div>
+  </div>
+
+  <div class="pi-block">
+    <div class="s-label pi">Profile</div>
+    <div class="profile-chips">
+      <span class="chip pi">Aron Meltzner</span>
+    </div>
+    <div class="s-label content" style="margin-top:10px">Content / Prompts</div>
+    <ul class="content-block" style="background:transparent;padding:0;margin:0;border:none">
+      <li>Why was it important for SEA2 to look thousands of years into the past?</li>
+      <li>What do coral microatolls and mangroves allow us to see that instruments alone cannot?</li>
+      <li>What did they reveal that you didn't expect?</li>
+      <li>When you assembled these long sea level records, what kind of pattern emerged?</li>
+    </ul>
+  </div>
+
+  <div class="connector">The deep record shows where sea level has been. But the sea is not the only thing moving in Southeast Asia. The ground is too.</div>
+</div>
+
+<!-- ── CHAPTER 3 — COMPONENT A ── -->
+<div class="card">
+  <div class="card-head">
+    <div class="scene-num">04</div>
+    <div class="card-titles">
+      <div class="card-title">When the Earth Moves Beneath Our Feet</div>
+      <div class="card-sub">Component A · Vertical Land Motion and Solid Earth · ~100 seconds</div>
+      <div class="card-hook">"In some cities the ground is sinking faster than the sea is rising. A twenty-year-old earthquake is still quietly making it worse."</div>
+    </div>
+    <div class="badges">
+      <span class="badge b-dim">~100 sec</span>
+      <span class="badge b-cyan">Interview + Archival</span>
+    </div>
+  </div>
+
+  <hr class="card-divider">
+
+  <div class="vis-block">
+    <div class="s-label vis">Visuals</div>
+    <div class="vis-tags">
+      <span class="vtag">InSAR deformation maps</span>
+      <span class="vtag">GPS stations in the field</span>
+      <span class="vtag">Subsidence map animations</span>
+      <span class="vtag">Satellite imagery</span>
+      <span class="vtag">Coastal megacity aerials</span>
+    </div>
+  </div>
+
+  <div class="pi-block">
+    <div class="s-label pi">Profile</div>
+    <div class="profile-chips">
+      <span class="chip pi">Grace Ng</span>
+    </div>
+    <div class="s-label content" style="margin-top:10px">Content / Prompts</div>
+    <ul class="content-block" style="background:transparent;padding:0;margin:0;border:none">
+      <li>In SEA2, why was it important to look at the land as well as the ocean?</li>
+      <li>What surprised you most when you started measuring vertical land motion across Southeast Asia?</li>
+      <li>How do earthquakes continue to matter long after the shaking stops?</li>
+      <li>The research found that the Earth's mantle beneath Southeast Asia is weaker than previously assumed. What does that change about how we model coastal risk globally?</li>
+    </ul>
+  </div>
+
+  <div class="connector">Sinking land raises the baseline. A higher baseline means extreme events strike harder and reach further than older models predict.</div>
+</div>
+
+<!-- ── CHAPTER 4 — COMPONENT C ── -->
+<div class="card">
+  <div class="card-head">
+    <div class="scene-num">05</div>
+    <div class="card-titles">
+      <div class="card-title">Extremes and Compound Events</div>
+      <div class="card-sub">Component C · Extreme Sea Levels and Compound Flooding · ~100 seconds</div>
+      <div class="card-hook">"Most of the time, coastlines change slowly. What happens when they don't?"</div>
+    </div>
+    <div class="badges">
+      <span class="badge b-dim">~100 sec</span>
+      <span class="badge b-cyan">Interview + Archival</span>
+      <span class="badge b-gold">+ External Voice</span>
+    </div>
+  </div>
+
+  <hr class="card-divider">
+
+  <div class="vis-block">
+    <div class="s-label vis">Visuals</div>
+    <div class="vis-tags">
+      <span class="vtag">Tsunami and storm surge models</span>
+      <span class="vtag">Calm coastal footage intercut with simulations</span>
+      <span class="vtag">Urban drainage / rivers meeting the sea</span>
+      <span class="vtag">Port network risk maps</span>
+      <span class="vtag">Research vessel imagery</span>
+    </div>
+  </div>
+
+  <div class="pi-block">
+    <div class="s-label pi">Profile</div>
+    <div class="profile-chips">
+      <span class="chip pi">Adam Switzer</span>
+    </div>
+    <div class="s-label content" style="margin-top:10px">Content / Prompts</div>
+    <ul class="content-block" style="background:transparent;padding:0;margin:0;border:none">
+      <li>The 2004 tsunami compressed over a century of coastal change into minutes. What did that reveal about how we should think about risk?</li>
+      <li>What does 'compound flooding' mean in practical terms for Southeast Asia?</li>
+      <li>What did SEA2 help clarify about extreme event risk in this region?</li>
+      <li>How did combining different datasets change your understanding of coastal risk?</li>
+    </ul>
+  </div>
+
+  <div class="ext-block">
+    <div class="s-label ext">External Voice: Government or Infrastructure Partner <span style="font-weight:400;font-style:italic;">[TBC]</span></div>
+    <ul>
+      <li>How has this research on extreme sea level risk informed your organisation's planning or preparedness?</li>
+      <li>What do you know now that you didn't five years ago?</li>
+    </ul>
+  </div>
+
+  <div class="connector">Understanding the physical threat is only part of the picture. The real cost shows up in disrupted lives, in communities displaced, in ecosystems pushed past their limits.</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     ACT 3 · THE STAKES
+═══════════════════════════════════════════════════════ -->
+<div class="act-bar a3">
+  <span class="act-num a3">Act 3 · The Stakes</span>
+  <div class="act-sep"></div>
+  <span class="act-desc">What rising seas mean for people, and what five years of science leaves behind</span>
+</div>
+
+<!-- ── CHAPTER 5 — COMPONENT E ── -->
+<div class="card">
+  <div class="card-head">
+    <div class="scene-num">06</div>
+    <div class="card-titles">
+      <div class="card-title">Human Dimensions and Impact</div>
+      <div class="card-sub">Component E · Flood Impacts, Vulnerability and Resilience · ~100 seconds</div>
+      <div class="card-hook">"Flooding doesn't just damage buildings. It disrupts ways of life, and those costs rarely show up in the models."</div>
+    </div>
+    <div class="badges">
+      <span class="badge b-dim">~100 sec</span>
+      <span class="badge b-cyan">Interview + Archival</span>
+      <span class="badge b-gold">+ External Voice</span>
+    </div>
+  </div>
+
+  <hr class="card-divider">
+
+  <div class="vis-block">
+    <div class="s-label vis">Visuals</div>
+    <div class="vis-tags">
+      <span class="vtag">Transport systems</span>
+      <span class="vtag">Coastal communities</span>
+      <span class="vtag">Mangroves and ports</span>
+      <span class="vtag">Infrastructure</span>
+      <span class="vtag">Community interviews, silent B-roll</span>
+      <span class="vtag">Philippines fieldwork</span>
+      <span class="vtag">Displacement mapping</span>
+    </div>
+  </div>
+
+  <div class="pi-block">
+    <div class="s-label pi">Profile</div>
+    <div class="profile-chips">
+      <span class="chip pi">David Lallemant</span>
+    </div>
+    <div class="s-label content" style="margin-top:10px">Content / Prompts</div>
+    <ul class="content-block" style="background:transparent;padding:0;margin:0;border:none">
+      <li>When we talk about flood impacts, what tends to be overlooked?</li>
+      <li>What did SEA2 reveal about who is most affected by flooding?</li>
+      <li>What role do ecosystems like mangroves play that isn't always captured in models?</li>
+      <li>What does resilience actually look like in the communities you've worked with?</li>
+    </ul>
+  </div>
+
+  <div class="ext-block">
+    <div class="s-label ext">External Voice: Regional Collaborator <span style="font-weight:400;font-style:italic;">[Input needed from David Lallemant]</span></div>
+    <ul>
+      <li>How has SEA2's impact research changed how your agency or community thinks about coastal resilience?</li>
+      <li>What is different now compared to five years ago?</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ── CLOSING ── -->
+<div class="card">
+  <div class="card-head">
+    <div class="scene-num">07</div>
+    <div class="card-titles">
+      <div class="card-title">Closing: What Five Years Built</div>
+      <div class="card-sub">Closing Sequence · ~75 seconds</div>
+      <div class="card-hook">"The sea has always defined Southeast Asia. Understanding it is how the region meets what comes next."</div>
+    </div>
+    <div class="badges">
+      <span class="badge b-dim">~75 sec</span>
+      <span class="badge b-cyan">Interview + Archival</span>
+    </div>
+  </div>
+
+  <hr class="card-divider">
+
+  <div class="vis-block">
+    <div class="s-label vis">Visuals</div>
+    <div class="vis-tags">
+      <span class="vtag">Field team montage</span>
+      <span class="vtag">Lab work across all components</span>
+      <span class="vtag">Regional workshops</span>
+      <span class="vtag">Collaborator portraits</span>
+      <span class="vtag">End card with partner logos</span>
+    </div>
+  </div>
+
+  <div class="pi-block">
+    <div class="s-label pi">Narrator Profile</div>
+    <div class="profile-chips">
+      <span class="chip pi">Adam Switzer</span>
+    </div>
+    <div class="s-label content" style="margin-top:10px">Content / Prompts</div>
+    <ul class="content-block" style="background:transparent;padding:0;margin:0;border:none">
+      <li>When you look back at SEA2 now, what feels most different from how you first thought about sea level rise?</li>
+      <li>What are you most proud of, beyond the publications?</li>
+      <li>What does SEA2 leave behind for the region and the next generation of researchers?</li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- TIMELINE STRIP -->
+<div class="timeline">
+  <div class="tl-item"><div class="tl-num">01</div><div class="tl-title">Opening</div></div>
+  <div class="tl-item"><div class="tl-num">02</div><div class="tl-title">Projections &amp; Uncertainty</div></div>
+  <div class="tl-item"><div class="tl-num">03</div><div class="tl-title">Learning from the Past</div></div>
+  <div class="tl-item"><div class="tl-num">04</div><div class="tl-title">The Earth Moves</div></div>
+  <div class="tl-item"><div class="tl-num">05</div><div class="tl-title">Extremes &amp; Compound Events</div></div>
+  <div class="tl-item"><div class="tl-num">06</div><div class="tl-title">Human Dimensions</div></div>
+  <div class="tl-item"><div class="tl-num">07</div><div class="tl-title">What Five Years Built</div></div>
+</div>
+
+
+<!-- PRODUCTION NOTES -->
+<div class="prod">
+  <div class="prod-header">Production Notes</div>
+  <div class="prod-grid">
+
+    <div class="prod-card">
+      <div class="prod-card-title">Interviews</div>
+      <ul>
+        <li>Each named PI: 3–4 min usable; cut to ~90 sec on screen</li>
+        <li>External voices: 2–3 min usable; cut to ~45–60 sec on screen</li>
+        <li>Sit-down, camera at eye level, relevant background</li>
+        <li>Confirm name, title, affiliation for lower-thirds before filming</li>
+        <li>Component E external collaborator: confirm with David Lallemant</li>
+      </ul>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-card-title">Music &amp; Pacing</div>
+      <ul>
+        <li>Score: understated acoustic or light orchestral, no dramatic swells</li>
+        <li>Archival photographs should breathe. Resist over-cutting.</li>
+        <li>Tone is documentary, not promotional</li>
+        <li>Opens and closes quietly; Act 2 carries the most forward motion</li>
+      </ul>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-card-title">External Contributor Slots</div>
+      <ul>
+        <li>Ch 1: Aurel Moise, Deputy Director, CCRS <em>(confirmed)</em></li>
+        <li>Scene 05: Government or infrastructure partner <em>(TBC)</em></li>
+        <li>Scene 06: Regional collaborator via David Lallemant <em>(input needed)</em></li>
+      </ul>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-card-title">Archival Audit</div>
+      <ul>
+        <li>Field photographs across all five component campaigns</li>
+        <li>Satellite and InSAR visualisations, confirm usage rights</li>
+        <li>Simulation and modelling animations (Components C and D)</li>
+        <li>Community and fieldwork images, Philippines (Component E)</li>
+        <li>Regional workshop and stakeholder engagement photographs</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="next-steps">
+    <div class="next-steps-title">Next Steps</div>
+    <ul>
+      <li>Circulate to all lead PIs (A–E) for review and sign-off</li>
+      <li>Confirm scene 05 and Closing external contributor slots</li>
+      <li>Get input from David Lallemant on scene 06 external collaborator</li>
+      <li>Confirm PI filming availability and preferred locations</li>
+      <li>Conduct archival material audit across all five components</li>
+      <li>On approval: develop full production script chapter by chapter</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>
